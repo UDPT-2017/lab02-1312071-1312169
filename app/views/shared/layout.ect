@@ -11,18 +11,62 @@
       <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <% if typeof current_user == "undefined" || !current_user : %>
+              <li><a href="/login">Log in</a></li>
+              <li><a href="/signup">Sign up</a></li>
+            <% else : %>
+              <li><a href="/logout">Log out <%= current_user.name %></a></li>
+            <% end %>
           </ul>
         </div>
       </nav>
-      <% content %>
-      <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+
+      <div class="clear"></div>
+    <div class="row">
+      <div class="col-md-2 col-sm-2">
+      <nav class="bs-docs-sidebar hidden-print hidden-xs">
+        <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#side-bar" aria-expanded="false">
+            <span class="sr-only"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="side-bar">
+          <ul class="nav navbar-nav">
+            <iframe scrolling="no" frameborder="no" clocktype="html5" style="overflow:hidden;border:0;margin:0;padding:0;width:175px;height:34px;"src="http://clocklink.com/html5embed.php?clock=sdt&timezone=VietNam_HoChiMinhCity&color=blue&size=175&Title=&Message=&Target=&From=2017,1,1,0,0,0&Color=blue"></iframe>
+          </ul>
+        </div>
+      </nav>
+      </div>
+      <div class="col-md-10 col-sm-10">
+        <div class = "content">
+          <% if @message : %>
+            <% if @message.error : %>
+            <p class="alert alert-danger">
+              <%= @message.error %>
+            </p>
+            <% else : %>
+            <p class="alert alert-success">
+              <%= @message.success %>
+            </p>
+            <% end %>
+          <% end %>
+          <% content %>
+        </div>
+      </div>
+    </div>
+   <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="#">UDPT-Lab02</a></li>
         </ul>
       </nav>
+  </div>
+
     </div>
     <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="/js/bootstrap.js"></script>
   </body>
 </html>
+

@@ -109,6 +109,10 @@ body{
 }
 
 .face2{
-
 	padding-left: 20px;
 }
+
+input{
+		width: 100%;
+	}
+
