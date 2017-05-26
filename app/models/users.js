@@ -16,6 +16,13 @@ var users = {
     {
       callback(error);
     }
+  },
+  findOneUser: function(name, callback){
+    pg.connect(connect, function(err, client, done){
+      client.query("SELECT * FROM users WHERE name = $1", [name], function(error, result){
+        callback(result);
+      });
+    })
   }
 }
 module.exports = users;

@@ -12,7 +12,7 @@ var usersController = {
 
     var message = {};
     if(user.name && user.email && user.password){
-      var result = users.signup(user,function(error){
+      users.signup(user,function(error){
         if(error){
           message.error = error.detail;
           res.render('signup', {message: message});
