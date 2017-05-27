@@ -6,12 +6,12 @@ var users = require('../models/users');
 
 var sessionsController = {
   login: function(req, res){
-    var name = req.body.name;
+    var email = req.body.email;
     var pass = req.body.password;
     var message = {};
     session = req.session;
 
-    var user = users.findOneUser(name,function(result){
+    var user = users.findOneUser(email,function(result){
         if(result){
           var kq = passwordHash.verify(pass, result.rows[0].password);
 
@@ -28,14 +28,14 @@ var sessionsController = {
           }
         }
         else{
-          message.error = "Invalid name";
+          message.error = "Invalid email";
           res.render('sessions/new', {message: message});
         }
     });
   },
   logout: function(req, res){
     message = {};
-    session.user = null;
+    session = null;
     message.success = "Log out successfully!";
     res.redirect('/');
   }
