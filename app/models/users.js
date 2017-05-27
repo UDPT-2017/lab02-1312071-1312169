@@ -1,8 +1,6 @@
 var pg = require('pg');
 var connect = "postgres://postgres@localhost:5432/messages";
 
-user_session = {};
-
 var users = {
   signup: function(user, callback){
     try{
@@ -17,12 +15,26 @@ var users = {
       callback(error);
     }
   },
-  findOneUser: function(name, callback){
+  findOneUser: function(email, callback){
     pg.connect(connect, function(err, client, done){
-      client.query("SELECT * FROM users WHERE name = $1", [name], function(error, result){
+      client.query("SELECT * FROM users WHERE email = $1", [email], function(error, result){
         callback(result);
       });
     })
+  },
+  listAllUser: function(callback){
+    pg.connect(connect, function(err, client, done){
+      client.query("SELECT * FROM users WHERE id <> $1 and id not in (SELECT friend_id from friends WHERE user_id = $2)", [session.user.id, session.user.id], function(err,result){
+        callback(result);
+      });
+    });
+  },
+  listFriend: function(callback){
+    pg.connect(connect, function(err, client, done){
+      client.query("SELECT u.id, u.name, u.email FROM friends f join users u on u.id = f.friend_id WHERE f.user_id = $1", [session.user.id], function(err, result){
+        callback(result);
+      });
+    });
   }
 }
 module.exports = users;

@@ -28,6 +28,13 @@ var usersController = {
       res.render('signup', {message: message});
     }
 
+  },
+  listAllUser: function(req, res){
+    users.listAllUser(function(result){
+      users.listFriend(function(friend){
+        res.render('users/index', {users: result.rows, friends: friend.rows});
+      })
+    });
   }
 };
 module.exports = usersController;
