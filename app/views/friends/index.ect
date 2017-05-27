@@ -1,0 +1,10 @@
+<% extend '../views/shared/layout' %>
+<% for friend in @friends : %>
+<div class="alert alert-success" role="alert">
+  <div class="row">
+    <div class= "col-md-8">
+      <%= friend.email %>
+    </div>
+  </div>
+</div>
+<% end %>

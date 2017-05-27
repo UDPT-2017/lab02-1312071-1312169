@@ -17,6 +17,10 @@
               <li><a href="/login">Log in</a></li>
               <li><a href="/signup">Sign up</a></li>
             <% else : %>
+              <li><a href="/users">Users</a></li>
+              <li><a href="/friends">Friend list</a></li>
+              <li><a href="/newMessage">New message</a></li>
+              <li><a href="/viewSentMess">Viewing sent message</a></li>
               <li><a href="/logout">Log out <%= session.user.name %></a></li>
             <% end %>
           </ul>
@@ -67,6 +71,7 @@
     </div>
     <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="/js/bootstrap.js"></script>
+    <script src="/js/app.js"></script>
   </body>
 </html>
 

@@ -1,0 +1,18 @@
+<% extend '../views/shared/layout' %>
+
+<% if @messages?.length : %>
+    <% for mess in @messages : %>
+    <div class="alert alert-success" role="alert">
+        <div class = "row">
+          <div class="col-md-4">
+      <%= mess.user_recipient %>
+
+      </div>
+      <div class="col-md-6"> <%= mess.content %></div>
+      <div class="col-md-2"><%= mess.time_recipient %></div>
+    </div>
+  </div>
+  <% end %>
+<% else : %>
+  <p>List is empty</p>
+<% end %>
