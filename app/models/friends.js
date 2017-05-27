@@ -13,6 +13,18 @@ var friends = {
     {
       callback(error);
     }
+  },
+  unfriend: function(id, callback){
+    try{
+      pg.connect(connect, function(err, client, done){
+        client.query("Delete From friends Where friend_id = $1 AND user_id = $2", [id, session.user.id], function(err, result){
+          callback(err);
+        });
+      });
+    }catch(error)
+    {
+      callback(error);
+    }
   }
 }
 module.exports = friends;

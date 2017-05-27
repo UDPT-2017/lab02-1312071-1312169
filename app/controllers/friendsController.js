@@ -2,6 +2,7 @@ var pg = require('pg');
 var connect = "postgres://postgres@localhost:5432/receipebook";
 var bodyParser = require('body-parser');
 var friends = require('../models/friends');
+var users = require('../models/users');
 
 var friendController = {
   addfriend: function(req, res){
@@ -21,12 +22,19 @@ var friendController = {
 
   unfriend: function(req, res){
     var id = req.params.id;
-    pg.connect(connect, function(err, client, done){
-      client.query("Delete From friends Where friend_id = $1", [id]);
-      done();
-      res.status(200).send('Success');
-    });
+    friends.unfriend(id, function(error){
+      if(error){
 
+      }
+      else{
+        res.status(200).send('Success');
+      }
+    })
+  },
+  listFriend: function(req, res){
+    users.listFriend(function(friend){
+      res.render('friends/index', {friends: friend.rows});
+    })
   }
 }
 

@@ -19,7 +19,7 @@ var sessionsController = {
           {
             message.success = "Login successfully!";
             session.user = result.rows[0];
-            res.redirect('/');
+            res.redirect('messages');
           }
           else
           {
