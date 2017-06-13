@@ -1,0 +1,31 @@
+<% extend '../views/shared/layout' %>
+<% for user in @users : %>
+  <form method="post" action= "/addfriend">
+    <div class="alert alert-success" role="alert">
+      <div class="row">
+
+        <div class="col-md-8">
+          <%= user.email %>
+        </div>
+        <div class= "col-md-4">
+          <button name="user" id="name" type="submit" class="btn btn-primary">Add friend</button>
+        </div>
+
+      </div>
+    </div>
+    <input type="hidden" name="friend_id" value="<%= user.id %>" />
+  </form>
+<% end %>
+
+<% for friend in @friends : %>
+<div class="alert alert-success" role="alert">
+  <div class="row">
+    <div class= "col-md-8">
+      <%= friend.email %>
+    </div>
+    <div class= "col-md-1">
+      <button name="user" id="unfr" type="submit" class="btn btn-primary" data-id = "<%= friend.id %>">Unfriend</button>
+    </div>
+  </div>
+</div>
+<% end %>
