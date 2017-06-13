@@ -1,0 +1,14 @@
+<% extend '../views/shared/layout' %>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Home</a></li>
+  <li class="breadcrumb-item active">Friends</li>
+</ol>
+<% for friend in @friends : %>
+<div class="alert alert-success" role="alert">
+  <div class="row">
+    <div class= "col-md-8">
+      <%= friend.email %>
+    </div>
+  </div>
+</div>
+<% end %>

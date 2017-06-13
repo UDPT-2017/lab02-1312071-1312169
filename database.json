@@ -1,0 +1,10 @@
+{
+  "dev": {
+    "host": "localhost",
+    "user": "postgres",
+    "password" : "",
+    "database": "messages",
+    "driver": "pg",
+    "multipleStatements": true
+  }
+}
