@@ -1,0 +1,10 @@
+{
+  "dev": {
+    "host": "localhost",
+    "user": "postgres",
+    "password" : "",
+    "database": "lab02",
+    "driver": "pg",
+    "multipleStatements": true
+  }
+}

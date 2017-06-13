@@ -1,0 +1,9 @@
+<% extend '../views/shared/layout' %>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Home</a></li>
+  <li class="breadcrumb-item"><a href="/messages">Messages</a></li>
+  <li class="breadcrumb-item active">Show</li>
+</ol>
+User send: <%= @mess.name %><br/>
+Title: <%= @mess.title %><br/>
+<%= @mess.content %><br/>

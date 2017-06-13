@@ -30,11 +30,16 @@ var usersController = {
 
   },
   listAllUser: function(req, res){
-    users.listAllUser(function(result){
-      users.listFriend(function(friend){
-        res.render('users/index', {users: result.rows, friends: friend.rows});
-      })
-    });
+    if(typeof session == "undefined" || session == null){
+      res.redirect('/');
+    }
+    else{
+      users.listAllUser(function(result){
+        users.listFriend(function(friend){
+          res.render('users/index', {users: result.rows, friends: friend.rows});
+        });
+      });
+    }
   }
 };
 module.exports = usersController;

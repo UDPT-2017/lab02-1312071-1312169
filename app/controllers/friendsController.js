@@ -1,5 +1,3 @@
-var pg = require('pg');
-var connect = "postgres://postgres@localhost:5432/receipebook";
 var bodyParser = require('body-parser');
 var friends = require('../models/friends');
 var users = require('../models/users');
@@ -32,9 +30,14 @@ var friendController = {
     })
   },
   listFriend: function(req, res){
-    users.listFriend(function(friend){
-      res.render('friends/index', {friends: friend.rows});
-    })
+    if(typeof session == "undefined" || session == null){
+      res.redirect('/');
+    }
+    else{
+      users.listFriend(function(friend){
+        res.render('friends/index', {friends: friend.rows});
+      });
+    }
   }
 }
 

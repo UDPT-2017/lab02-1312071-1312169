@@ -1,18 +1,31 @@
 <% extend '../views/shared/layout' %>
-
-<% if @messages?.length : %>
-    <% for mess in @messages : %>
-    <div class="alert alert-success" role="alert">
-        <div class = "row">
-          <div class="col-md-4">
-      <%= mess.user_recipient %>
-
-      </div>
-      <div class="col-md-6"> <%= mess.content %></div>
-      <div class="col-md-2"><%= mess.time_recipient %></div>
-    </div>
-  </div>
-  <% end %>
-<% else : %>
-  <p>List is empty</p>
-<% end %>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Home</a></li>
+  <li class="breadcrumb-item active">Messages</li>
+</ol>
+<span class="glyphicon glyphicon-refresh" aria-hidden="true" id = "sync-messages"></span>
+<table class="table">
+  <tbody>
+    <% if @messages?.length : %>
+      <% for mess in @messages : %>
+        <% if mess.time_read == null : %>
+          <tr class="mess alert alert-warning" data-id = "<%= mess.id %>" role="alert">
+            <td><a><%= mess.name %></a></td>
+            <td><a><%= mess.title %></a></td>
+            <td><a><%= mess.time_send %></a></td>
+            <td><a><%= mess.time_ago %></a></td>
+          </tr>
+        <% else : %>
+          <tr class="mess" data-id = "<%= mess.id %>">
+            <td><a><%= mess.name %></a></td>
+            <td><a><%= mess.title %></a></td>
+            <td><a><%= mess.time_send %></a></td>
+            <td><a><%= mess.time_ago %></a></td>
+          </tr>
+        <% end %>
+      <% end %>
+    <% else : %>
+      <p>List is empty</p>
+    <% end %>
+  </tbody>
+</table>
