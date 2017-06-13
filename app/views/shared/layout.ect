@@ -3,6 +3,7 @@
   <head>
     <title> Message App </title>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css.map">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   </head>
@@ -15,11 +16,10 @@
             <li><a href="/about">About</a></li>
             <% if typeof session == "undefined" || session == null : %>
               <li><a href="/login">Log in</a></li>
-              <li><a href="/signup">Sign up</a></li>
             <% else : %>
               <li><a href="/users">Users</a></li>
               <li><a href="/friends">Friend list</a></li>
-              <li><a href="/newMessage">New message</a></li>
+              <li><a href="/messages/new">New message</a></li>
               <li><a href="/viewSentMess">Viewing sent message</a></li>
               <li><a href="/logout">Log out <%= session.user.name %></a></li>
             <% end %>

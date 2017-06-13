@@ -1,5 +1,3 @@
-var pg = require('pg');
-var connect = "postgres://postgres:postgres@localhost:5432/bt01";
 var bodyParser = require('body-parser');
 var passwordHash = require('password-hash');
 var users = require('../models/users');
@@ -12,7 +10,7 @@ var sessionsController = {
     session = req.session;
 
     var user = users.findOneUser(email,function(result){
-        if(result){
+        if(result.rowCount == 1){
           var kq = passwordHash.verify(pass, result.rows[0].password);
 
           if(kq == true)
