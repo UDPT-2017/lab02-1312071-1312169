@@ -3,7 +3,7 @@
     "host": "localhost",
     "user": "postgres",
     "password" : "",
-    "database": "lab02",
+    "database": "messages",
     "driver": "pg",
     "multipleStatements": true
   }
