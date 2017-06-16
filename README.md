@@ -45,7 +45,7 @@ Yêu cầu **không bắt buộc**:
 * [x] Quản lý các thay đổi trong cơ sở dữ liệu (sử dụng [db-migrate](https://www.npmjs.com/package/db-migrate))(**1312071**)
 
 Liệt kê các **yêu cầu nâng cao** đã thực hiện:
-* [x] Bắt buộc đăng nhập với tất cả các chức năng( nếu chưa đăng nhập thì redirect tới trang login user).(**1312071**)
+* [x] Bắt buộc đăng nhập với tất cả các chức năng( nếu chưa đăng nhập thì redirect tới trang login user). (**1312071**)
 
 ## Demo
 
